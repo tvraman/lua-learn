@@ -17,7 +17,7 @@ function factorial (n, ac)
    end
 end
 -- Fibonacci generator
-
+-- Returns a closure.
 function makefib ()
    a,b =1,1
    return function ()
