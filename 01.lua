@@ -25,3 +25,12 @@ function makefib ()
       return a
    end
 end
+
+-- to Iterator using a coroutine:
+--[[
+f=coroutine.wrap (
+   function ()
+      fib=makefib()
+      while true do coroutine.yield(fib()) end
+end )
+--]]
