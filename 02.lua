@@ -10,7 +10,7 @@ end
 -- Swap  element at index i with last element and recurse.
 
 function permgen (a, n)
-  if n == 0 then
+  if n == 1 then
     coroutine.yield(a)
   else
     for i=1,n do
