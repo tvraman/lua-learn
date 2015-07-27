@@ -5,6 +5,15 @@ function printResult (a)
   for i,v in ipairs(a) do io.write(v, " ") end
   io.write("\n")
 end
+function listtostring (a)
+  res =""
+  for i,v in ipairs(a) do res = res .. v .. " " end
+  return res
+end
+
+-- Set up a metatable  for permutations:
+Permutation = {}
+Permutation.__tostring = listtostring
 
 -- Generate a permutation:
 -- Swap  element at index i with last element and recurse.
@@ -24,6 +33,7 @@ end
 -- Generator using coroutine.wrap:
 -- Usage: for i in perm(sequence) do ... end
 function perm (a)
-  local n = table.getn(a) -- length of list 
+  local n = table.getn(a) -- length of list
+  setmetatable(a, Permutation)
   return coroutine.wrap(function () permgen(a, n) end)
 end
